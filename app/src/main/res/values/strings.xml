@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MyPeaksCompose</string>
+
+    <string name="title_routes">routes</string>
+    <string name="title_news">news</string>
+    <string name="title_profile">profile</string>
+    <string name="title_route_details">route_details</string>
+    <string name="error">error</string>
 </resources>
