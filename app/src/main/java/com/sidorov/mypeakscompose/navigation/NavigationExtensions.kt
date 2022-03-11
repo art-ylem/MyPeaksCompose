@@ -1,4 +1,4 @@
-package com.sidorov.mypeakscompose.utils.navigation
+package com.sidorov.mypeakscompose.navigation
 
 import android.os.Bundle
 import android.os.Parcelable

@@ -14,14 +14,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sidorov.mypeakscompose.navigation.PresentModal
+import com.sidorov.mypeakscompose.navigation.Screen
+import com.sidorov.mypeakscompose.navigation.createExternalRouter
+import com.sidorov.mypeakscompose.navigation.navigate
 import com.sidorov.mypeakscompose.screens.MainScreen
 import com.sidorov.mypeakscompose.screens.empty.EmptyScreen
 import com.sidorov.mypeakscompose.ui.theme.MyPeaksComposeTheme
-import com.sidorov.mypeakscompose.utils.navigation.PresentModal
-import com.sidorov.mypeakscompose.utils.navigation.Screen
-import com.sidorov.mypeakscompose.utils.navigation.createExternalRouter
-import com.sidorov.mypeakscompose.utils.navigation.navigate
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     @ExperimentalAnimationApi

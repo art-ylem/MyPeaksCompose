@@ -1,4 +1,4 @@
-package com.sidorov.mypeakscompose.utils.navigation
+package com.sidorov.mypeakscompose.navigation
 
 import com.sidorov.mypeakscompose.R
 

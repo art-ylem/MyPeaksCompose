@@ -24,6 +24,31 @@ object Dependencies {
         const val compiler = "com.google.dagger:hilt-compiler:$version"
     }
 
+    object Dagger {
+        const val version = "2.30.1"
+        const val dagger = "com.google.dagger:dagger:$version"
+        const val compiler = "com.google.dagger:dagger-compiler:$version"
+    }
+
+    object RxJava {
+        const val rxJavaVersion = "2.2.10"
+        const val rxAndroidVersion = "2.1.1"
+        const val rxAndroid = "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+        const val rxJava = "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    }
+
+    object Retrofit {
+        const val version = "2.9.0"
+        const val retrofit = "com.squareup.retrofit2:retrofit:$version"
+        const val gson = "com.squareup.retrofit2:converter-gson:$version"
+        const val adapter = "com.squareup.retrofit2:adapter-rxjava2:$version"
+    }
+
+    object OkHttp {
+        const val version = "4.7.2"
+        const val logInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
+    }
+
     object Room {
         private const val version = "2.3.0"
         const val ktx = "androidx.room:room-ktx:$version"

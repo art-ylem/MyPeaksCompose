@@ -1,4 +1,4 @@
-package com.sidorov.mypeakscompose.utils.navigation
+package com.sidorov.mypeakscompose.navigation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi

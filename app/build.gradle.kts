@@ -20,6 +20,7 @@ android {
         targetSdk = Config.targetSDK
         versionCode = Config.versionCode
         versionName = Config.versionName
+        buildConfigField("String", "BASE_URL", "\"http://myApiServer.ru\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -78,6 +79,22 @@ dependencies {
     implementation(Dependencies.Hilt.android)
     implementation(Dependencies.Hilt.navigation)
     kapt(Dependencies.Hilt.compiler)
+
+    // Dagger
+//    implementation(Dependencies.Dagger.dagger)
+//    kapt(Dependencies.Dagger.compiler)
+
+    // RxJava
+    implementation(Dependencies.RxJava.rxJava)
+    implementation(Dependencies.RxJava.rxAndroid)
+
+    // Retrofit
+    implementation(Dependencies.Retrofit.retrofit)
+    implementation(Dependencies.Retrofit.gson)
+    implementation(Dependencies.Retrofit.adapter)
+
+    // OkHttp
+    implementation(Dependencies.OkHttp.logInterceptor)
 
     // Room
     implementation(Dependencies.Room.ktx)

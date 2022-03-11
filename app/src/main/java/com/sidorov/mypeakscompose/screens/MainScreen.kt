@@ -1,22 +1,26 @@
 package com.sidorov.mypeakscompose.screens
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sidorov.mypeakscompose.navigation.Router
+import com.sidorov.mypeakscompose.navigation.RoutesContainer
+import com.sidorov.mypeakscompose.navigation.Screen
 import com.sidorov.mypeakscompose.screens.news.NewsScreen
 import com.sidorov.mypeakscompose.screens.profile.ProfileScreen
-import com.sidorov.mypeakscompose.screens.routes.RoutesScreen
-import com.sidorov.mypeakscompose.utils.navigation.Router
-import com.sidorov.mypeakscompose.utils.navigation.RoutesContainer
-import com.sidorov.mypeakscompose.utils.navigation.Screen
 
 @ExperimentalAnimationApi
 @Composable
@@ -28,8 +32,20 @@ fun MainScreen(
     val navController = rememberNavController()
     val bottomItems = listOf(Screen.Routes, Screen.News, Screen.Profile)
 
-    Scaffold(
-        bottomBar = {
+    Column {
+        Box(modifier = Modifier.weight(1f)) {
+            NavHost(navController = navController, startDestination = Screen.Routes.screenName) {
+                composable(Screen.Routes.screenName) { RoutesContainer(externalRouter = router) }
+                composable(Screen.News.screenName) { NewsScreen(router) }
+                composable(Screen.Profile.screenName) { ProfileScreen(router) }
+            }
+        }
+
+        Box(
+            modifier = Modifier
+                .height(56.dp)
+                .fillMaxWidth()
+        ) {
             BottomNavigation {
                 bottomItems.forEach { screen ->
                     BottomNavigationItem(
@@ -55,12 +71,6 @@ fun MainScreen(
                     )
                 }
             }
-        }
-    ) {
-        NavHost(navController = navController, startDestination = Screen.Routes.screenName) {
-            composable(Screen.Routes.screenName) { RoutesContainer(externalRouter = router) }
-            composable(Screen.News.screenName) { NewsScreen(router) }
-            composable(Screen.Profile.screenName) { ProfileScreen(router) }
         }
     }
 }
