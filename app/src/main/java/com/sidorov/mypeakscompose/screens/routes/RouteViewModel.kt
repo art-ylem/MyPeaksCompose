@@ -12,29 +12,27 @@ import javax.inject.Inject
 class RouteViewModel @Inject constructor(private val routesUseCase: RoutesUseCase) :
     BaseViewModel<RouteViewModel.ViewState>() {
 
-    private var uiStateLiveData: MutableLiveData<ViewState> = MutableLiveData()
-    fun getUiStateLiveData(): LiveData<ViewState> = uiStateLiveData
-    fun setUiStateLiveData(ld: MutableLiveData<ViewState>) {
-        uiStateLiveData = ld
-    }
+    private var _uiStateLiveData: MutableLiveData<ViewState> = MutableLiveData()
+    fun uiStateLiveData(): LiveData<ViewState> = _uiStateLiveData
 
     init {
         addUseCase()
         loadData()
-        uiStateLiveData.postState(ViewState.LoadingViewState)
+        _uiStateLiveData.postState(ViewState.LoadingViewState)
     }
 
     private fun loadData() {
         val dis = routesUseCase.getRoutes().subscribe({
-            uiStateLiveData.postState(ViewState.OnSuccessState(it))
+            _uiStateLiveData.postState(ViewState.OnSuccessState(it))
         }, {
-            val err = it
+            _uiStateLiveData.postState(ViewState.ErrorViewState)
         })
         cd.add(dis)
     }
 
     sealed class ViewState {
         object LoadingViewState : ViewState()
+        object ErrorViewState : ViewState()
         class OnSuccessState(val onSuccessData: RoutesVO) : ViewState()
     }
 }

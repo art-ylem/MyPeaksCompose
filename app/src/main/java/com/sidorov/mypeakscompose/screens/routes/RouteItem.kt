@@ -14,11 +14,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.sidorov.mypeakscompose.R
 import com.sidorov.mypeakscompose.data.vo.RouteVO
+import com.sidorov.mypeakscompose.screens.MainScreenViewModel
 
 @Composable
-fun RouteItem(route: RouteVO) {
+fun RouteItem(
+    route: RouteVO,
+    mainScreenViewModel: MainScreenViewModel,
+    navController: NavController
+) {
     Card(
         modifier = Modifier
             .padding(16.dp)
@@ -30,7 +36,7 @@ fun RouteItem(route: RouteVO) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Image(
-                painter = painterResource(id = R.drawable.mountain_placeholder),
+                painter = painterResource(R.drawable.mountain_placeholder),
                 contentDescription = "route's image",
                 modifier = Modifier
                     .clip(RoundedCornerShape(16.dp, 16.dp, 0.dp, 0.dp))
@@ -55,7 +61,7 @@ fun RouteItem(route: RouteVO) {
                         .padding(start = 12.dp, top = 8.dp)
                 ) {
                     Button(
-                        onClick = { },
+                        onClick = { mainScreenViewModel.showBottomNavBar() },
                         modifier = Modifier
                             .border(
                                 1.dp,
@@ -72,7 +78,7 @@ fun RouteItem(route: RouteVO) {
                     ) {
                         Icon(
                             modifier = Modifier.padding(end = 8.dp, start = 0.dp),
-                            painter = painterResource(id = R.drawable.ic_go),
+                            painter = painterResource(R.drawable.ic_go),
                             contentDescription = "climb the mountain"
                         )
                         Text(text = "Go")
@@ -82,9 +88,9 @@ fun RouteItem(route: RouteVO) {
                 Icon(
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
-                        .clickable { }
+                        .clickable { mainScreenViewModel.hideBottomNavBar() }
                         .padding(16.dp),
-                    painter = painterResource(id = R.drawable.ic_download_24),
+                    painter = painterResource(R.drawable.ic_download_24),
                     contentDescription = "climb the mountain",
 
                 )

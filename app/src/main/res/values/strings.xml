@@ -6,4 +6,6 @@
     <string name="title_profile">profile</string>
     <string name="title_route_details">route_details</string>
     <string name="error">error</string>
+    <string name="back">back</string>
+    <string name="close">close</string>
 </resources>
